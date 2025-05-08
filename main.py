@@ -2,15 +2,25 @@ import streamlit as st
 from pymongo import MongoClient
 from datetime import datetime, timezone
 import re
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def is_valid_email(email):
     return re.match(r"[^@]+@[^@]+\.[^@]+", email)
 
 def main():
+    # Load MongoDB credentials from environment
+    mongo_uri = os.getenv("MONGO_URI")
+    db_name = os.getenv("MONGO_DB_NAME")
+    collection_name = os.getenv("MONGO_COLLECTION_NAME")
+
     # Connect to MongoDB
-    client = MongoClient('mongodb+srv://shiv:Shiv%40000@order-data.o0g7hzj.mongodb.net/')
-    db = client['ordersdb']
-    collection = db['orders']
+    client = MongoClient(mongo_uri)
+    db = client[db_name]
+    collection = db[collection_name]
 
     # Display title
     st.title("Order Creation Form")
