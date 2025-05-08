@@ -27,11 +27,11 @@ def main():
 
     # Form elements
     with st.form(key='user_form'):
-        name = st.text_input("Enter your full name")
-        company_name = st.text_input("Enter the company name")
-        email = st.text_input("Enter your email")
-        part_no = st.text_input("Enter the part number")
-        quantity = st.text_input("Enter the quantity")
+        name = st.text_input("Enter your full name", placeholder="name")
+        company_name = st.text_input("Enter the company name", placeholder="company name")
+        email = st.text_input("Enter your email", placeholder="email")
+        part_no = st.text_input("Enter the part number", placeholder="part number")
+        quantity = st.text_input("Enter the quantity", placeholder="quantity")
 
         submit_button = st.form_submit_button("Create")
 
